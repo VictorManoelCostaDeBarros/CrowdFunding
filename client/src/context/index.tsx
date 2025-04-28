@@ -1,6 +1,6 @@
 import { createContext, useContext, type ReactNode, useState } from 'react';
 import { createPublicClient, createWalletClient, custom, http, formatEther, parseEther, type Account } from 'viem';
-import { anvil } from 'viem/chains';
+import { sepolia } from 'viem/chains';
 import { abi } from '../utils/abi';
 
 const contractAddress = '0xB8E18fb553aA8BFb8dbC6155e63e89035E965B70';
@@ -53,7 +53,7 @@ export const StateContextProvider = ({ children }: StateContextProviderProps) =>
   const [walletClient, setWalletClient] = useState<ReturnType<typeof createWalletClient> | null>(null);
 
   const publicClient = createPublicClient({
-    chain: anvil,
+    chain: sepolia,
     transport: http(),
   });
 
@@ -65,7 +65,7 @@ export const StateContextProvider = ({ children }: StateContextProviderProps) =>
     }
 
     const walletClientInstance = createWalletClient({
-      chain: anvil,
+      chain: sepolia,
       transport: custom(ethereum),
     });
 
@@ -90,7 +90,7 @@ export const StateContextProvider = ({ children }: StateContextProviderProps) =>
         BigInt(new Date(form.deadline).getTime()),
         form.image,
       ],
-      chain: anvil,
+      chain: sepolia,
       account: address as unknown as Account
     });
   };
@@ -133,7 +133,7 @@ export const StateContextProvider = ({ children }: StateContextProviderProps) =>
       functionName: 'donateToCampaign',
       args: [pId],
       value: parseEther(amount),
-      chain: anvil,
+      chain: sepolia,
       account: address as unknown as Account
     });
   };
