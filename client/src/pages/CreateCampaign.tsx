@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom"
 import { money} from "../assets"
-import { type ChangeEvent, useState } from "react"
+import { type ChangeEvent, type FormEvent, useState } from "react"
 import { FormField } from "../components/FormField"
 import { CustomButton } from "../components/CustomButton"
 import { useStateContext } from "../context"
@@ -32,7 +32,7 @@ export function CreateCampaign() {
     })
   }
 
-  async function handleSubmit(e: SubmitEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     checkIfImage(form.image, async (exists: boolean) => {
